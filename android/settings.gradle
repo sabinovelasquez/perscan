@@ -1,0 +1,3 @@
+rootProject.name = 'perscan'
+
+include ':app'
