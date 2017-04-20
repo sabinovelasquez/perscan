@@ -77,16 +77,19 @@ class scanPage extends Component {
     this.props.navigator.pop({ screen: 'mainPage' });
   }
   switchType = () => {
-    let newType;
+    let newType, mirror;
     const { back, front } = Camera.constants.Type;
     if (this.state.camera.capType === back) {
       newType = front;
+      mirror = true;
     } else if (this.state.camera.capType === front) {
       newType = back;
+      mirror = false;
     }
     this.setState({
       camera: {
         capType: newType,
+        camMirror: mirror
       },
     });
   }
@@ -129,7 +132,7 @@ class scanPage extends Component {
           captureTarget={Camera.constants.CaptureTarget.temp}
           keepAwake={true}
           type={this.state.camera.capType}
-          mirrorImage={false}
+          mirrorImage={this.state.camera.camMirror}
           style={styles.scan}>
           <TouchableOpacity style={styles.switchBtn} onPress={this.switchType}>
             <Svg height='42' width='49'>
