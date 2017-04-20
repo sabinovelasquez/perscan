@@ -27,9 +27,28 @@ import Svg,{
   Stop
 } from 'react-native-svg';
 
-const scanPage = require('./scanPage.js');
+const scanPage = require('./scanPage');
 
 class mainPage extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      beginX: 0,
+      endX: 0
+    }
+  }
+
+  // moveStart = (e) => {
+  //   this.setState({beginX: e.nativeEvent.pageX});
+  // }
+  // moveEnd = (e) => {
+  //   this.setState({endX: e.nativeEvent.pageX});
+  //   if(this.state.beginX > this.state.endX+5) {
+  //     this.perscanInit();
+  //   }
+  // }
+
   render() {
     return (
       <View style={styles.container}>
@@ -99,10 +118,7 @@ class mainPage extends Component {
     this.props.navigator.push({
       title: 'scanPage',
       component: scanPage,
-      navigationBarHidden: true,
-      passProps: {
-        test: 'text'
-      }
+      navigationBarHidden: true
     });
   }
 };
