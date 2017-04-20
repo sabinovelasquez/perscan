@@ -29,11 +29,13 @@ import Svg,{
   Stop
 } from 'react-native-svg';
 
+import * as firebase from 'firebase';
 
 class displayPage extends Component {
 
   constructor(props) {
     super(props);
+    this.itemsRef = firebase.database().ref();
     this.animatedValue = new Animated.Value(0)
     this.state = {
       beginX: 0,
@@ -42,7 +44,14 @@ class displayPage extends Component {
   }
 
   componentDidMount () {
-    this.animate()
+    this.animate();
+    this.itemsRef.child(`male/1`).once('value', (snap) => {
+      const info = snap.val();
+      this.setState({
+        title: info.title,
+        subtitle: 'La huea fleta ctm'
+      });
+    });
   }
   animate () {
     this.animatedValue.setValue(0)
@@ -57,6 +66,10 @@ class displayPage extends Component {
   }
 
   goBack = () => {
+    this.setState({
+      title: null,
+      subtitle: null
+    });
     this.props.navigator.pop({ screen: 'scanPage' });
   }
 
@@ -74,7 +87,8 @@ class displayPage extends Component {
             position: 'absolute',
             marginTop: movingMargin,
             marginLeft: 0,
-            height: 3,
+            opacity: !this.state.title ? 1.0 : 0.0,
+            height: !this.state.title ? 3 : 0,
             width: Dimensions.get('window').width,
             backgroundColor: '#FF00DA'}} />
         </View>
@@ -83,11 +97,19 @@ class displayPage extends Component {
           source={{ uri: this.props.img }}
         />
         <View style={styles.textContainer}>
-          <TouchableOpacity onPress={this.goBack}>
+          <View style={{opacity: !this.state.title ? 1.0 : 0.0, height: !this.state.title ? 'auto' : 0.0}}>
             <Text style={styles.fontLight}>
               analizando...
             </Text>
-          </TouchableOpacity>
+          </View>
+          <View style={{opacity: this.state.title ? 1.0 : 0.0, justifyContent: 'center', height: this.state.title ? 'auto' : 0.0}}>
+            <Text style={styles.fontBold}>
+              {this.state.title}
+            </Text>
+            <Text style={styles.subtitle}>
+              {this.state.subtitle}
+            </Text>
+          </View>
         </View>
       </View>
     );
@@ -138,5 +160,17 @@ const styles = StyleSheet.create({
     color: '#777777',
     backgroundColor: 'transparent'
   },
+  fontBold: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 28,
+    color: '#FF0058',
+    backgroundColor: 'transparent'
+  },
+  subtitle: {
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 22,
+    color: '#fff',
+    backgroundColor: 'transparent'
+  }
 });
 module.exports = displayPage;

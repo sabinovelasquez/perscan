@@ -7,6 +7,9 @@ import {
 } from 'react-native';
 
 const mainPage = require('./views/mainPage')
+import * as firebase from 'firebase';
+import firebaseConfig from './firebaseSettings.json';
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 class perscan extends Component {
   render() {

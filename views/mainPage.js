@@ -48,7 +48,13 @@ class mainPage extends Component {
   //     this.perscanInit();
   //   }
   // }
-
+  perscanInit() {
+    this.props.navigator.push({
+      title: 'scanPage',
+      component: scanPage,
+      navigationBarHidden: true
+    });
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -113,13 +119,6 @@ class mainPage extends Component {
         </Svg>
       </View>
     );
-  }
-  perscanInit() {
-    this.props.navigator.push({
-      title: 'scanPage',
-      component: scanPage,
-      navigationBarHidden: true
-    });
   }
 };
 
