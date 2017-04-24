@@ -38,16 +38,7 @@ class mainPage extends Component {
       endX: 0
     }
   }
-
-  // moveStart = (e) => {
-  //   this.setState({beginX: e.nativeEvent.pageX});
-  // }
-  // moveEnd = (e) => {
-  //   this.setState({endX: e.nativeEvent.pageX});
-  //   if(this.state.beginX > this.state.endX+5) {
-  //     this.perscanInit();
-  //   }
-  // }
+  
   perscanInit() {
     this.props.navigator.push({
       title: 'scanPage',

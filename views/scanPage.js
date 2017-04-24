@@ -39,7 +39,7 @@ class scanPage extends Component {
       beginX: 0,
       endX: 0,
       camera: {
-        captureTarget: Camera.constants.CaptureTarget.cameraRoll,
+        // captureTarget: Camera.constants.CaptureTarget.cameraRoll,
         capType: Camera.constants.Type.back,
         orientation: Camera.constants.Orientation.auto,
         flashMode: Camera.constants.FlashMode.auto,
