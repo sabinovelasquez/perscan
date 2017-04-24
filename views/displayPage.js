@@ -10,6 +10,7 @@ import {
   CameraRoll,
   Animated,
   Easing,
+  Alert,
   Navigator
 } from 'react-native';
 
@@ -52,13 +53,19 @@ class displayPage extends Component {
 
   componentDidMount () {
     this.animate();
-    this.itemsRef.child(`male/1`).once('value', (snap) => {
+    this.itemsRef.child(`${this.props.gender}`).once('value', (snap) => {
+      const long = snap.numChildren();
+      let arr = [];
+      snap.forEach( (data) => {
+        arr.push(data.val());
+      });
+      const randTitle = Math.floor((Math.random() * long));
+      const randSubtitle = Math.floor((Math.random() * long));
       const randNum = Math.floor((Math.random() * 4) + 1);
-      const info = snap.val();
       setTimeout(() => {
         this.setState({
-          title: info.title,
-          subtitle: 'La huea fleta ctm'
+          title: arr[randTitle].title.toUpperCase(),
+          subtitle: arr[randTitle].subtitle
         })}, randNum*1000);
     });
   }

@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   View,
-  Navigator
+  NavigatorIOS
 } from 'react-native';
 import Svg,{
   Circle,
@@ -56,7 +56,8 @@ class scanPage extends Component {
             component: displayPage,
             navigationBarHidden: true,
             passProps: {
-              img: data.path
+              img: data.path,
+              gender: this.state.gender
             },
           });
         })
@@ -98,7 +99,7 @@ class scanPage extends Component {
       <View style={styles.container}>
         <View style={styles.actions}>
           <View style={styles.iconContainer}>
-            <TouchableOpacity onPress={this.takePicture} style={styles.male}>
+            <TouchableOpacity onPress={() => {this.setState({gender: 'male'}); this.takePicture() }} style={styles.male}>
               <Svg height='80' width='80'>
                 <Defs>
                   <G id='iconmale'>
@@ -111,7 +112,7 @@ class scanPage extends Component {
             </TouchableOpacity>
           </View>
           <View style={styles.iconContainer}>
-            <TouchableOpacity onPress={this.takePicture} style={styles.female}>
+            <TouchableOpacity onPress={() => {this.setState({gender: 'female'}); this.takePicture() }} style={styles.female}>
               <Svg height='80' width='80'>
                 <Defs>
                   <G id='iconfemale'>
