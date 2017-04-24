@@ -81,7 +81,7 @@ class displayPage extends Component {
   saveResult = refname => () => {
     takeSnapshot(this.refs[refname])
     .then(
-      uri => console.log(uri),
+      uri => CameraRoll.saveToCameraRoll(uri, 'photo'),
       error => console.error('failed', error)
     );
   }
