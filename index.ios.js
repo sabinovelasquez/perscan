@@ -1,63 +1,34 @@
 'use strict';
-
 import React, { Component } from 'react';
 import {
-  ActivityIndicator,
   AppRegistry,
-  Dimensions,
   StyleSheet,
-  Text,
-  Image,
-  TouchableOpacity,
-  TouchableHighlight,
-  View,
-  StatusBar
+  NavigatorIOS
 } from 'react-native';
-import Camera from 'react-native-camera';
 
-export default class perscan extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      capType: Camera.constants.Type.back
-    };
-  }
-  componentDidMount() {
-    this.setState({
-      title: 'PERSCAN'
-    });
-  }
+const mainPage = require('./views/mainPage')
+import * as firebase from 'firebase';
+import firebaseConfig from './firebaseSettings.json';
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+class perscan extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Image source={require('./assets/bg.png')} style={styles.backgroundImage}>
-          <Text style={styles.fontLight}>
-            {this.state.title}
-          </Text>
-        </Image>
-      </View>
+      <NavigatorIOS
+        style = {styles.container}
+        initialRoute= {{
+          title: 'Perscan',
+          component: mainPage,
+          navigationBarHidden: true
+        }}/>
     );
   }
-  /////render Ends
-}
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  backgroundImage: {
-    alignItems: 'center',
-    resizeMode: 'cover',
-    height: '100%',
-    width: '100%',
-  },
-  fontLight: {
-    fontFamily: 'Montserrat-Light',
-    fontSize: 36,
-    marginTop: '40%',
-    color: '#fff',
-    backgroundColor: 'transparent'
+    backgroundColor: '#EEEEEE'
   },
 });
 
