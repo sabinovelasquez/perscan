@@ -45,7 +45,7 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8AC2F31B3C174EF2AF29FE6D /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 882314CF7E754B2386181FAE /* Montserrat-Italic.ttf */; };
 		8BAF97EC69FF4B289F4A79EA /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E67799532A8428F80F053BE /* Montserrat-Black.ttf */; };
-		DE0469DC1EA95A0900DC2A18 /* RCTCameraRoll.xcodeproj in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0469D61EA932F900DC2A18 /* RCTCameraRoll.xcodeproj */; };
+		DEAE0E831EAE15A3002A093F /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0469DB1EA932F900DC2A18 /* libRCTCameraRoll.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -322,7 +322,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE0469DC1EA95A0900DC2A18 /* RCTCameraRoll.xcodeproj in Frameworks */,
+				DEAE0E831EAE15A3002A093F /* libRCTCameraRoll.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,

@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   View,
   CameraRoll,
+  Alert,
   Animated,
   Easing
 } from 'react-native';
@@ -81,9 +82,20 @@ class displayPage extends Component {
   saveResult = refname => () => {
     takeSnapshot(this.refs[refname])
     .then(
-      uri => CameraRoll.saveToCameraRoll(uri, 'photo'),
+      uri => CameraRoll.saveToCameraRoll(uri, 'photo').then(this.saved),
       error => console.error('failed', error)
     );
+  }
+
+  saved() {
+    Alert.alert(
+      'Listo',
+      'Foto ql se guardó en tu huea.',
+      [
+        {text: 'Otra más', onPress: () => console.log('go back')},
+      ],
+      { cancelable: false }
+    )
   }
 
   render() {
