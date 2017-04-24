@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   TouchableHighlight,
+  Navigator,
   View,
 } from 'react-native';
 
@@ -38,7 +39,7 @@ class mainPage extends Component {
       endX: 0
     }
   }
-  
+
   perscanInit() {
     this.props.navigator.push({
       title: 'scanPage',

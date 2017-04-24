@@ -8,9 +8,9 @@ import {
   TouchableHighlight,
   View,
   CameraRoll,
-  Alert,
   Animated,
-  Easing
+  Easing,
+  Navigator
 } from 'react-native';
 
 import Svg,{
@@ -31,6 +31,7 @@ import Svg,{
   Stop
 } from 'react-native-svg';
 
+import Modal from 'react-native-simple-modal';
 import { takeSnapshot, dirs } from 'react-native-view-shot';
 const { CacheDir, DocumentDir, MainBundleDir, MovieDir, MusicDir, PictureDir } = dirs;
 
@@ -43,6 +44,7 @@ class displayPage extends Component {
     this.itemsRef = firebase.database().ref();
     this.animatedValue = new Animated.Value(0)
     this.state = {
+      modalOpen: false,
       beginX: 0,
       endX: 0
     }
@@ -51,11 +53,13 @@ class displayPage extends Component {
   componentDidMount () {
     this.animate();
     this.itemsRef.child(`male/1`).once('value', (snap) => {
+      const randNum = Math.floor((Math.random() * 4) + 1);
       const info = snap.val();
-      this.setState({
-        title: info.title,
-        subtitle: 'La huea fleta ctm'
-      });
+      setTimeout(() => {
+        this.setState({
+          title: info.title,
+          subtitle: 'La huea fleta ctm'
+        })}, randNum*1000);
     });
   }
 
@@ -71,31 +75,24 @@ class displayPage extends Component {
     ).start(() => this.animate())
   }
 
-  goBack = () => {
+  goBack = (state) => {
     this.setState({
       title: null,
       subtitle: null
     });
-    this.props.navigator.pop({ screen: 'scanPage' });
+    if(state=='back') {
+      this.props.navigator.pop({ screen: 'scanPage' });
+    }else {
+      this.props.navigator.popToTop();
+    }
   }
 
   saveResult = refname => () => {
     takeSnapshot(this.refs[refname])
     .then(
-      uri => CameraRoll.saveToCameraRoll(uri, 'photo').then(this.saved),
+      uri => CameraRoll.saveToCameraRoll(uri, 'photo').then(this.setState({modalOpen:true})),
       error => console.error('failed', error)
     );
-  }
-
-  saved() {
-    Alert.alert(
-      'Listo',
-      'Foto ql se guardó en tu huea.',
-      [
-        {text: 'Otra más', onPress: () => console.log('go back')},
-      ],
-      { cancelable: false }
-    )
   }
 
   render() {
@@ -106,6 +103,16 @@ class displayPage extends Component {
     })
     return (
       <View>
+        <TouchableOpacity style={styles.closeBtn} onPress={this.goBack}>
+          <Svg height='40' width='40'>
+            <Path
+              d='M 10,10 L 40,40 M 40,10 L 10,40'
+              stroke='#F8671F'
+              fill='none'
+              strokeWidth='2'
+            />
+          </Svg>
+        </TouchableOpacity>
         <View ref='perscan' style={styles.container}>
           <View style={styles.scanning}>
             <Animated.View
@@ -129,6 +136,7 @@ class displayPage extends Component {
                   fontFamily: 'Montserrat-Light',
                   textAlign: 'center',
                   fontSize: 18,
+                  marginTop: 60,
                   color: '#777777',
                   backgroundColor: 'transparent'
                 }
@@ -184,20 +192,38 @@ class displayPage extends Component {
                 {this.state.subtitle}
               </Text>
             </View>
+            <Text style={
+              {
+                position: 'absolute',
+                textAlign: 'center',
+                bottom: 35,
+                width: Dimensions.get('window').width,
+                zIndex:98,
+                fontFamily: 'Montserrat-Light',
+                color: '#535353'
+              }
+            }>
+              Analizado por perscan.cl CTM
+            </Text>
           </View>
         </View>
         <View style={
           {
-            opacity: this.state.title ? 1.0 : 0.0,
-            height: this.state.title ? 'auto' : 0,
             position: 'absolute',
             flexDirection: 'row',
             bottom: 10,
-            zIndex:99,
+            zIndex:14,
+            opacity: this.state.modalOpen ? 0 : 1,
+            backgroundColor: '#222'
           }
         }>
           <TouchableOpacity onPress={this.saveResult('perscan')} style={styles.iconContainer}>
-            <Svg height='50' width='50'>
+            <Svg height='50' width='50' style={
+                {
+                  opacity: this.state.title ? 1.0 : 0.0,
+                  height: this.state.title ? 'auto' : 0,
+                }
+              }>
               <Circle cx='25' cy='25' r='24' fill='none' stroke='white'/>
               <Defs>
                 <G id='save'>
@@ -210,6 +236,28 @@ class displayPage extends Component {
             </Svg>
           </TouchableOpacity>
         </View>
+        <Modal
+          open={this.state.modalOpen}
+          modalDidOpen={() => console.log('modal did open')}
+          modalDidClose={() => this.setState({modalOpen: false})}
+          modalStyle={styles.modal}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>LISTO</Text>
+            <Text style={styles.modalMsg}>Foto ql se guardó en tu huea.</Text>
+            <View style={styles.modalActions}>
+              <TouchableOpacity
+                style={styles.modalBtnsV}
+                onPress={() => {this.setState({modalOpen: false}); this.goBack('back')}}>
+                <Text style={styles.modalBtns}>Otra más</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.modalBtnsV}
+                onPress={() => {this.setState({modalOpen: false}); this.goBack('home')}}>
+                <Text style={styles.modalBtns}>Fome tu huea</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
       </View>
     );
     ///Render ends...
@@ -221,6 +269,12 @@ const styles = StyleSheet.create({
     height: '100%',
     backgroundColor: '#222222',
     alignItems: 'center',
+  },
+  closeBtn: {
+    position: 'absolute',
+    right: 20,
+    top: 30,
+    zIndex: 1
   },
   scanning: {
     position: 'absolute',
@@ -238,6 +292,48 @@ const styles = StyleSheet.create({
   capture: {
     marginTop: '95%',
     color: '#fff',
+  },
+  modal: {
+    alignItems: 'center',
+    backgroundColor: '#F8671F',
+    borderRadius: 8,
+  },
+  modalActions: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalBtns: {
+    marginTop: 5,
+    marginBottom: 5,
+    textAlign: 'center',
+    color: '#FF0058',
+    textAlign: 'center',
+    padding: 10,
+    fontFamily: 'Montserrat-Bold',
+  },
+  modalBtnsV: {
+    marginTop: 30,
+    marginBottom: 30,
+    margin: '5%',
+    width: '40%',
+    backgroundColor: '#fff',
+    borderRadius: 6,
+    alignItems: 'center',
+  },
+  modalTitle: {
+    marginTop: 20,
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 28,
+    color: '#fff',
+    textAlign: 'center'
+  },
+  modalMsg: {
+    marginTop: 20,
+    fontFamily: 'Montserrat-Light',
+    fontSize: 20,
+    color: '#fff',
+    textAlign: 'center'
   },
   scan: {
     height: '70%',

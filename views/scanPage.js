@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   View,
-  NavigatorIOS
+  Navigator
 } from 'react-native';
 import Svg,{
   Circle,
