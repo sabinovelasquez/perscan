@@ -3,6 +3,7 @@ package com.perscan;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.apsl.versionnumber.RNVersionNumberPackage;
 import fr.greweb.reactnativeviewshot.RNViewShotPackage;
 import com.horcrux.svg.SvgPackage;
 import com.horcrux.svg.SvgPackage;
@@ -27,6 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNVersionNumberPackage(),
             new RNViewShotPackage(),
             new SvgPackage(),
             new SvgPackage(),

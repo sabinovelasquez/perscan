@@ -11,8 +11,10 @@
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.3",
     "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
+    "react-native-simple-modal": "^5.0.0",
     "react-native-svg": "^5.1.7",
     "react-native-svg-uri": "^1.2.0",
+    "react-native-version-number": "^0.1.2",
     "react-native-view-shot": "^1.9.1"
   },
   "devDependencies": {
