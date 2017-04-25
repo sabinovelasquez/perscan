@@ -27,7 +27,6 @@
 		28809FA2ACF24FCBBC2EC5D7 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8DD17C7A75A4EE4A57A3F0F /* Montserrat-Light.ttf */; };
 		2ADE3981DF0249808AAD2D03 /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B415ED711C214C238599B990 /* libRNViewShot.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2D02E4C21E0B4AEC006451C7 /* libRCTAnimation-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157351DD0AC6500FF2AA8 /* libRCTAnimation-tvOS.a */; };
 		2D02E4C31E0B4AEC006451C7 /* libRCTImage-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */; };
@@ -46,6 +45,7 @@
 		8AC2F31B3C174EF2AF29FE6D /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 882314CF7E754B2386181FAE /* Montserrat-Italic.ttf */; };
 		8BAF97EC69FF4B289F4A79EA /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E67799532A8428F80F053BE /* Montserrat-Black.ttf */; };
 		D3AB84295F734214B78A78B2 /* libRNVersionNumber.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A43FAC667DC24414907A9DAC /* libRNVersionNumber.a */; };
+		DE290A911EAEE47900F9F951 /* perscanicon.png in Resources */ = {isa = PBXBuildFile; fileRef = DE290A901EAEE47900F9F951 /* perscanicon.png */; };
 		DEAE0E831EAE15A3002A093F /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0469DB1EA932F900DC2A18 /* libRCTCameraRoll.a */; };
 /* End PBXBuildFile section */
 
@@ -316,6 +316,7 @@
 		DC563D3AF26346DE8EAC10BF /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Medium.ttf"; path = "../fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		DE0469B81EA932C600DC2A18 /* CameraRoll */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CameraRoll; path = "../node_modules/react-native/Libraries/CameraRoll"; sourceTree = "<group>"; };
 		DE0469D61EA932F900DC2A18 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
+		DE290A901EAEE47900F9F951 /* perscanicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = perscanicon.png; path = ../../../Desktop/perscan/perscanicon.png; sourceTree = "<group>"; };
 		FAE94F17347D4E54ACC7852F /* RNSVG.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -462,6 +463,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
+				DE290A901EAEE47900F9F951 /* perscanicon.png */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = perscan;
@@ -1039,6 +1041,7 @@
 				0842E77F92494D90A5ED9F1C /* Montserrat-Bold.ttf in Resources */,
 				8AC2F31B3C174EF2AF29FE6D /* Montserrat-Italic.ttf in Resources */,
 				28809FA2ACF24FCBBC2EC5D7 /* Montserrat-Light.ttf in Resources */,
+				DE290A911EAEE47900F9F951 /* perscanicon.png in Resources */,
 				760F5B0DBBDB444BAFD72D2E /* Montserrat-Medium.ttf in Resources */,
 				7CC261B681EC4F7995AA3A1C /* Montserrat-Regular.ttf in Resources */,
 			);
@@ -1048,7 +1051,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
