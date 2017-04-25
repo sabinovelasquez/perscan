@@ -45,6 +45,7 @@
 		8AC2F31B3C174EF2AF29FE6D /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 882314CF7E754B2386181FAE /* Montserrat-Italic.ttf */; };
 		8BAF97EC69FF4B289F4A79EA /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E67799532A8428F80F053BE /* Montserrat-Black.ttf */; };
 		DEAE0E831EAE15A3002A093F /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0469DB1EA932F900DC2A18 /* libRCTCameraRoll.a */; };
+		D3AB84295F734214B78A78B2 /* libRNVersionNumber.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A43FAC667DC24414907A9DAC /* libRNVersionNumber.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -306,6 +307,8 @@
 		DE0469B81EA932C600DC2A18 /* CameraRoll */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CameraRoll; path = "../node_modules/react-native/Libraries/CameraRoll"; sourceTree = "<group>"; };
 		DE0469D61EA932F900DC2A18 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		FAE94F17347D4E54ACC7852F /* RNSVG.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
+		A9F4E568129346C79F85ECAB /* RNVersionNumber.xcodeproj */ = {isa = PBXFileReference; name = "RNVersionNumber.xcodeproj"; path = "../node_modules/react-native-version-number/ios/RNVersionNumber.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		A43FAC667DC24414907A9DAC /* libRNVersionNumber.a */ = {isa = PBXFileReference; name = "libRNVersionNumber.a"; path = "libRNVersionNumber.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,6 +339,7 @@
 				5477A5C03D094DF8A1045166 /* libRCTCamera.a in Frameworks */,
 				23EE0ACCA7F3407FB24AB68D /* libRNSVG.a in Frameworks */,
 				2ADE3981DF0249808AAD2D03 /* libRNViewShot.a in Frameworks */,
+				D3AB84295F734214B78A78B2 /* libRNVersionNumber.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +509,7 @@
 				C883BF4053304E09A84151F9 /* RCTCamera.xcodeproj */,
 				FAE94F17347D4E54ACC7852F /* RNSVG.xcodeproj */,
 				779BB7E5D94D4835A2A1AA93 /* RNViewShot.xcodeproj */,
+				A9F4E568129346C79F85ECAB /* RNVersionNumber.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1137,12 +1142,14 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
+					"$(SRCROOT)/../node_modules/react-native-version-number/ios",
 				);
 				INFOPLIST_FILE = perscanTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1167,12 +1174,14 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
+					"$(SRCROOT)/../node_modules/react-native-version-number/ios",
 				);
 				INFOPLIST_FILE = perscanTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1198,6 +1207,7 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
+					"$(SRCROOT)/../node_modules/react-native-version-number/ios",
 				);
 				INFOPLIST_FILE = perscan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1223,6 +1233,7 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
+					"$(SRCROOT)/../node_modules/react-native-version-number/ios",
 				);
 				INFOPLIST_FILE = perscan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1254,11 +1265,13 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
+					"$(SRCROOT)/../node_modules/react-native-version-number/ios",
 				);
 				INFOPLIST_FILE = "perscan-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1291,11 +1304,13 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
+					"$(SRCROOT)/../node_modules/react-native-version-number/ios",
 				);
 				INFOPLIST_FILE = "perscan-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1328,6 +1343,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.perscan-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1352,6 +1368,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);

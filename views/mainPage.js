@@ -28,6 +28,8 @@ import Svg,{
   Stop
 } from 'react-native-svg';
 
+import VersionNumber from 'react-native-version-number';
+
 const scanPage = require('./scanPage');
 
 class mainPage extends Component {
@@ -109,12 +111,21 @@ class mainPage extends Component {
             clipPath='url(#clip)'
           />
         </Svg>
+        <Text style={styles.vn}>v{VersionNumber.buildVersion} CTM</Text>
       </View>
+      ///Render ends...
     );
   }
 };
 
 const styles = StyleSheet.create({
+  vn:{
+    width: Dimensions.get('window').width,
+    textAlign: 'center',
+    color: '#858585',
+    position: 'absolute',
+    bottom: 20
+  },
   mainBtn: {
     width: 80,
     height: 80,
