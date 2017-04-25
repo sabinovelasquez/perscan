@@ -111,7 +111,7 @@ class mainPage extends Component {
             clipPath='url(#clip)'
           />
         </Svg>
-        <Text style={styles.vn}>v{VersionNumber.buildVersion} ctm.</Text>
+        <Text style={styles.vn}>v{VersionNumber.appVersion} ctm.</Text>
       </View>
       ///Render ends...
     );
